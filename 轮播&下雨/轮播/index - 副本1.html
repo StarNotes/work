@@ -1,0 +1,180 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset = "utf-8">
+		<title>轮播</title>
+		<style type="text/css">
+			html,body,div,ul,li,img{
+				margin:0;
+				padding:0;
+			}
+			li{
+				list-style: none;
+			}
+			.clearfix{
+				content: '';
+				display: block;
+				clear: both;
+			}
+			div{
+				position: relative;
+				width:600px;
+				height:300px;
+				border: 10px solid rgba(0,0,0,0.5);
+				border-radius: 10px;
+				margin: 100px auto;
+				/*overflow: hidden;*/
+			}
+			.imgList{
+				position: absolute;
+				width:100%;
+				height:100%;
+			}
+			.imgList li{
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				display: none;
+			}
+			.imgList li.active{
+				display: block;
+			}
+			/*.imgList li:first-child{
+				z-index: 10;
+			}*/
+			img{
+				width:600px;
+				height:300px;
+				cursor: pointer;
+			}
+			span{
+				position: absolute;
+				top:50%;
+				margin-top: -20px;
+				display: block;
+				width:40px;
+				height:40px;
+				background-color: rgba(0,0,0,0.1);
+				color: #fff;
+				font-weight: bolder;
+				font-size: 36px;
+				border-radius: 40px;
+				text-align: center;
+				line-height: 40px;
+				cursor: pointer;
+			}
+			.arrow1{
+				left:10px;
+			}
+			.arrow2{
+				right:10px;
+			}
+			.docList{
+				position: absolute;
+				left: 50%;
+				margin-left: -40px;
+				bottom: 10px;
+				/*border: 1px solid #000;*/
+			}
+			.docList li{
+				float: left;
+				margin:0px 5px;
+				width: 0;
+				height: 0;
+				border: 5px solid rgba(0,0,0,0.6);
+				border-radius: 5px;
+				cursor: pointer;
+			}
+			.docList li.active{
+				border-color: #fff;
+			}
+		</style>
+		<script type="text/javascript" src="http://kejian.jirengu.com/static/js/jquery-1.11.1.min.js"></script>
+	</head>
+	<body>
+		<div>
+			<ul class = "imgList clearfix">
+				<li class = "active"><img src="img/1.jpg"></li>
+				<li><img src="img/2.jpg"></li>
+				<li><img src="img/3.jpg"></li>
+				<li><img src="img/4.jpg"></li>
+			</ul>
+			<span class = "arrow1"><</span>
+			<span class = "arrow2">></span>
+			<ul class = "docList clearfix">
+				<li class = "active"></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+		</div>
+		<script type="text/javascript">
+			var curIdx = 0;
+			var len = $(".imgList li").length;
+			var timer = null;
+
+			var $pre = $(".arrow1"),
+				$next = $(".arrow2"),
+				$over = $(".docList li");
+
+			$pre.on('click', function(){
+				gotoPre();
+			})
+
+			$next.on('click',function(){
+				gotoNext();
+			});
+
+			$over.on('mouseover',function(){
+				var idx = $(this).index();
+				gotoPage(idx);
+			});
+
+			function gotoPre(){
+				var pre = (curIdx+len-1)%len;
+				gotoPage(pre);
+			}
+
+			function gotoNext(){
+				var next = (curIdx+len+1)%len;
+				gotoPage(next);
+			}
+
+			autoPlay();
+
+			function gotoPage(idx){
+				$(".imgList li").eq(idx).fadeIn().siblings("li").fadeOut();
+   				$(".docList li").eq(idx).addClass("active").siblings("li").removeClass("active");
+   				curIdx = idx;
+			}
+
+			function autoPlay(){
+				timer = setInterval(function(){
+					gotoNext();
+				},1000)
+			}
+			
+			
+
+			function stopPlay(){
+				clearInterval(timer);
+			}
+
+			// $("div").on("mouseenter",function(){
+			// 	stopPlay();
+				
+			// })
+
+			// $("div").on("mouseleave",function(){
+			// 	autoPlay();
+			// })
+			$("div").hover(function(){
+				stopPlay();
+			},function(){
+				autoPlay();
+			})
+		</script>
+	</body>
+</html>

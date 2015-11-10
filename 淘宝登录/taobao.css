@@ -1,0 +1,146 @@
+*{
+	margin:0;padding:0
+}
+a{
+	text-decoration: none;
+		
+}
+.header{
+	height:50px;
+	margin:30px 70px;	
+}
+.main{
+	width:900px;
+	margin:70px auto;
+	position:relative;
+}
+
+
+.main .loginbox{
+	float: right;
+	width:315px;
+	height:335px;
+	top:0;right:0;	
+	border:2px solid #BBBBBB;
+	border-top:2px solid #FF8C00;
+}
+.main .loginbox .warp{	
+	width:250px;margin:0 auto;
+}
+
+.loginbox .warp h3{
+	float: left;
+	width:125px;
+	height:50px;
+	line-height:50px;	
+	font-size:14px;
+	text-align: center;
+	border-bottom:1px solid #9E9E9E;
+	color:#9E9E9E;
+}
+
+
+
+
+
+
+.loginbox .warp .speed-login{
+	display: none;
+	width:250px;
+	text-align: center;
+}
+.loginbox .warp .speed-login img{
+	margin:25px 65px;
+}
+.loginbox .warp .speed-login h5{
+	font-size:14px;
+	color:#9E9E9E;	
+}
+.loginbox .warp .speed-login p{
+	font-size:12px;
+	margin-top:15px;
+}
+.loginbox .warp .speed-login p a{
+	text-decoration:none;
+	color:#FF8C00;
+}
+.loginbox .warp .speed-login p a:hover{
+	text-decoration:underline;
+}
+
+
+
+
+
+.loginbox .warp .psd-login{	
+	/*margin-top:-218px;*/
+	width:250px;
+	font-size:12px;
+}
+.warp .psd-login form{
+	width:250px;
+	height:120px;
+}
+.warp .psd-login input{
+	margin-top:18px;
+	width:200px;
+	height:33px;
+	border:1px solid #BBBBBB;
+}
+.psd-login .user{
+	background:url(images/user.jpg) no-repeat;	
+	padding-left:50px;
+	color:#BBBBBB;
+}
+.psd-login .psd{
+	background:url(images/psd.jpg) no-repeat;	
+	padding-left:50px;
+}
+.psd-login .forget{
+	margin-top:30px;
+
+}
+.psd-login .forget a{
+	width:250px;
+	text-decoration: none;
+	color:#000000;
+}
+.psd-login .forget a:hover{
+	text-decoration:underline;
+	color:#FF8C00;
+}
+
+.psd-login .login{
+	width:245px;
+	height:30px;
+	line-height:30px;
+	background:#FF8C00;
+	margin-top:20px;                         /*为什么这里用margin-top距离可以出啦，用top却没效果*/
+	text-align: center;
+	font-weight:bold;
+}
+.psd-login ul{
+	margin-top:20px;
+}
+.psd-login ul li{
+	list-style:none;
+	width:60px;
+	height:25px;
+	line-height:25px;
+	float:left;
+	padding-left:20px;
+}
+.psd-login ul li a{
+	text-decoration: none;
+	font-weight:10px;
+}
+.psd-login ul li a:hover{
+	text-decoration:underline;
+	color:#FF8C00;
+}
+.psd-login ul .weibo{
+	background:url(images/weibo.jpg) no-repeat;
+}
+.psd-login ul .alipay{
+	background:url(images/alipay.jpg) no-repeat;
+}

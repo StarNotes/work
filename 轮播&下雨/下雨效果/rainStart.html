@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>雨滴效果</title>
+	<script src="jquery-1.11.1.js"></script>
+</head>
+<body>
+	<button class = "start">开始</button>
+	<button class = "stop">停止</button>
+	<script type="text/javascript">
+		var rain =( function(){
+			var WinHeight = $(document).height();
+			var WinWidth = $(document).width();
+			var time  = null;
+
+			function Drop(){
+				var $div = $("<div style='position: absolute; width: 13px; height: 13px; top: -13px;'><img src='icon.png' alt=''/></div>");
+					$div.appendTo("body");
+				var SLeft = rand(0,WinWidth),
+					posStart = {
+						left : SLeft,
+						top : "-13px"
+					},
+					posEnd = {
+						left : SLeft + rand(-50,50),
+						top : WinHeight
+					}
+					$div.css(posStart);
+					$div.animate(posEnd,1000,function(){
+						$(this).remove();
+					})
+			}
+
+			function start(){
+				time = setInterval(Drop,10)
+			}
+
+			function stop(){
+				clearInterval(time);
+			}
+
+			function rand(a,b){
+				return a + (Math.floor(Math.random() * (b - a))) + 'px';
+			}
+
+			return {
+				start : start,
+				stop : stop
+			}
+		})();
+		
+
+		$(".start").on("click",function(){
+			rain.start();
+		});
+		$(".stop").on("click",function(){
+			rain.stop();
+		});
+	</script>
+</body>
+</html>

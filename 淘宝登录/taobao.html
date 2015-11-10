@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>淘宝登录</title>
+		<link href="taobao.css" rel="stylesheet" type="text/css" />
+		<script type="text/javascript" src="jquery.js"></script> 
+		<script type="text/javascript">
+			$(function(){
+				$(".main .loginbox .warp .login1").bind("click",function(){
+					$(".speed-login").show();
+					$(".psd-login").hide();
+					
+				})
+				$(".main .loginbox .warp .login2").bind("click",function(){
+					$(".psd-login").show();
+					$(".speed-login").hide();
+
+				})
+			})
+		</script>
+	</head>
+	<body>
+		<div class="header">
+			<img src="images/logo.png" />
+		</div>
+		<div class="main">			
+			<img src="images/pic.jpg" />			
+			<div class="loginbox">
+				<div class="warp">
+					<h3><a href="#" class="login1">快速登录</a></h3>
+					<h3><a href="#" class="login2">账号密码登录</a></h3>
+					<div class="speed-login">
+						<img src="images/2.jpg" />
+						<h5>手机扫码  安全登录</h5>
+						<p>使用<a href="#">手机淘宝</a>、<a href="#">阿里钱盾</a>扫描二维码</p>
+					</div>
+					<div class="psd-login">
+						<from>
+							<input type="text" class="user" placeholder="会员名/邮箱" required="required"/>
+							<input type="password" class="psd" required="required" />
+						</from>
+						<div class="forget">
+							<a href="#">忘记登录密码?</a>
+							<a href="#">免费注册</a>
+						</div>
+						<div class="login">
+							<a href="#" style="color:#FFFFFF">登  录</a>
+						</div>
+						<ul>
+							<li class="weibo"><a href="#">微博登录</a></li>
+							<li class="alipay"><a href="#">支付宝</a></li>
+						</ul>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

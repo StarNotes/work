@@ -1,0 +1,105 @@
+html,body,div,ul,li,dl,dt,dd{
+	margin:0;padding:0;
+}
+li{
+	list-style: none;
+}
+a{
+	text-decoration: none;
+	font-family: "微软雅黑";
+}
+a:hover{
+	text-decoration: underline;
+}
+.hot{
+	color:#ff00cc;
+}
+.clearfix{
+	content: "";
+	display: block;
+	clear:both;
+}
+#main-nav dt a{
+	color:#000;
+	font-size: 13px;
+	font-weight:300;
+}
+.sub-nav dt a{
+	color:#000;
+	font-size: 12px;
+	font-weight: bolder;
+}
+dl a{
+	color:rgba(0,0,0,0.7);
+	font-size: 12px;
+}
+
+dd a{
+	display: inline-block;
+	padding-right: 15px;
+}
+
+
+#main-nav {
+	position: relative;
+	width:240px;
+	float: left;
+	border:1px solid rgba(0,0,0,0.7);
+}
+#main-nav li{
+	position: relative;
+	padding: 10px 35px 10px 13px;
+	border-bottom: 1px dotted rgba(0,0,0,0.7);
+}
+#main-nav li:last-child{
+	border-bottom: none;
+}
+#main-nav li dt{
+	margin-bottom: 5px;
+}
+#main-nav li .arrow{
+	position: absolute;
+	top: 55%;
+	right: 25px;
+	width:6px;
+	height:10px;
+	background: url("img/arrow.png") no-repeat;
+}
+#main-nav li .line{
+	position: absolute;
+	width:2px;
+	height:100%;
+	top: 0;
+	right:-1px;
+	background-color: #fff;
+	display:none;
+}
+#main-nav li:hover .arrow{
+	background-position: -5px 0px;
+}
+#main-nav li:hover .line{
+	display: block;
+}
+
+.sub-nav{	
+	position: absolute;
+	display: none;
+	border:1px solid rgba(0,0,0,0.7);
+	border-left: none;
+	left:240px;
+	width:280px;
+	padding: 0 10px 30px 25px;
+}
+
+.sub-nav dt{
+	margin:20px 0 10px 0;
+}
+.top{
+	top:-1px;
+}
+.middle{
+	top:-130px;
+}
+.bottom{
+	bottom:-1px;
+}

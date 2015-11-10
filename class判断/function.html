@@ -1,0 +1,109 @@
+<!Doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>判断DOM元素的class</title>
+<style type="text/css">
+ #p{
+ 	margin-bottom: 30px;
+ 	width:300px;
+ 	height:50px;
+ 	line-height: 50px;
+ 	text-align:left;
+ }
+ .col{
+ 	border: 1px solid red;
+ }
+ .tex{
+ 	color:black;
+ }
+ .add{
+ 	background-color: rgba(0,0,0,0.3);
+ }
+</style>
+</head>
+<body>
+<div id="p" class="col tex"> 判 断 D O M 元 素 的 c l a s s </div>
+<button>增加样式</button>
+<button>删除样式</button>
+<button>去掉空格</button>
+<script type="text/javascript">
+	document.getElementsByTagName("button")[0].onclick = function(){
+		document.getElementById("p").className = addClass(className,"add");
+	};
+	document.getElementsByTagName("button")[1].onclick = function(){
+		document.getElementById("p").className = removeClass(className,"add");
+	};
+	document.getElementsByTagName("button")[2].onclick = function(){
+		document.getElementById("p").innerHTML = trim(document.getElementById("p").innerHTML);		
+	};
+
+</script>
+<script type="text/javascript">
+	var mydiv = document.getElementById("p"),
+		className = mydiv.className;
+	
+	function hasClass(className,cls){
+		var arr = className.split(/\s+/);
+		for(var i=0; i < arr.length; i++){
+			if(arr[i] === cls){
+				return true;
+			}
+		}return false;
+	}
+	//用正则表达式匹配
+	// function hasClass(className,cls){
+	// 	  var reg = new RegExp('\\b'+cls+'\\b');
+	// 	  return className.search(reg) > -1;
+	// }
+
+	function addClass(className,cls){
+		var arr = className.split(/\s+/);
+		for(var i=0; i<arr.length; i++){
+			if(arr[i] ===cls){
+				return className;
+			}           
+		}
+		arr.concat(cls);
+        var newcls=arr.concat(cls).join(" ");
+		return newcls;		    
+	}
+	//用正则表达式匹配
+	// function addClass(className,cls){
+	// 		if(!hasClass(className,cls)){
+	// 			return (className + " " + cls);		
+	// 	}
+	// 		return className;
+	//  }
+
+	function removeClass(className,cls){
+		var arr = className.split(/\s+/);
+		for(var i=0; i < arr.length; i++){
+			if(arr[i] === cls){
+				arr.splice(i,1);
+				var newcls = arr.join(" ");
+			}
+			return newcls;
+		}return className;
+	}
+	//用正则表达式匹配
+	// function removeClass(className,cls){
+	// 		if(!hasClass(className,cls)){
+	// 			return className.replace(new RegExp('\\b'+cls+'\\b'),"");
+	// 		}
+	// 		return className;
+	// }
+
+	function removePath(mydiv,cls){	          //删除所有其他所有样式
+		for(var i=0; i < className.length; i++){
+			removeClass(className[i],cls);
+		}
+	}
+	
+	function trim(str){         //去掉字符空格
+		return str.replace(/(^\s+)|(\s+$)/g,"");
+	}
+
+</script>
+</body>
+</html>

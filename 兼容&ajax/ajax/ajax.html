@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>ajax封装</title>
+</head>
+<style type="text/css">
+	#con{
+		width:300px;
+		height:200px;
+		border: 1px solid #000;
+		margin-bottom: 20px;
+	}
+</style>
+<body>
+<div id = "con"></div>
+<button>点我</button>
+<script type="text/javascript">
+    
+function ajax(opts){
+    		var xmlhttp = new XMLHttpRequest();
+    		xmlhttp.onreadystatechange = function(){
+    			if(xmlhttp.readyState==4 && xmlhttp.status==200){
+    				opts.success(xmlhttp.responseText);
+                }else if(xmlhttp.status==404){
+                	opts.error();
+                } 			
+    		}
+    		xmlhttp.open(opts.type,opts.url+"?"+url(opts),true);
+    		xmlhttp.send();
+	}
+
+	var con = document.getElementById("con");
+	var btn = document.getElementsByTagName("button")[0];
+
+    var obj = {
+        url: 'ajax.php',
+        type: 'post',
+        data: {
+            name: 'kevin',
+            age: 18
+        },
+        success: function(data){
+            con.innerHTML = data;
+        },
+        error: function(){
+           alert('error');
+        }
+    }
+
+    btn.onclick = function(){
+        ajax(obj);
+    };
+
+    function url(obj){
+        var json = obj.data;
+        var str = "";
+        for(var k in json){
+            str += k+"="+json[k]+"&";
+        }
+        return str.slice(0,str.length-1);
+    }
+
+    </script>
+    </body>
+    </html>

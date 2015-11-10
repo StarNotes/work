@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>ajax加载更多</title>
+  <style type="text/css">
+  body,ul,li{
+  	margin: 0;padding: 0;
+  }
+	li{
+		list-style: none;
+		padding: 5px;
+		margin: 5px;
+		border: 1px solid #000;
+		border-radius: 5px;
+	}
+  </style>
+</head>
+<body>
+	<ul id = "ct">
+		<li>内容0</li>
+		<li>内容1</li>
+	</ul>
+	<button id = "load-more">加载更多</button>
+
+	<script type="text/javascript">
+		var loadMore = document.getElementById("load-more"),
+			ct = document.getElementById("ct");
+		var cur = 2;
+		var isLoading = false;
+
+		bind(loadMore,"click",function(){
+			if(isLoading){
+				return;
+			}
+			isLoading = false;
+			loadMore.innerText = "加载中。。。";
+			ajax({
+				url:"ajax.php",
+				data:{
+					start:2,
+					len:6
+				},
+				success:function(json){
+					isLoading = false;
+					loadMore.innerText = "加载更多";
+					if(json.status == 1){
+						append(json.data);
+						cur +=6;
+					}else{
+						alert("获取数据失败")；
+					}
+				},
+				error:function(){
+					isLoading = false;
+					loadMore.innerText = "加载更多";
+					alert("系统异常")；
+				}
+			})
+		})
+
+		function append(arr){
+			for(var i=0;i<arr.length;i++){
+				var li = document.createElement('li');
+				li.innerText = arr[i];
+				ct.appendChild("li");
+			}
+		}
+
+
+		function ajax(opts){
+			var xmlhttp = new XMLHttpRequest();
+			xmlhttp.onreadystatechange = function(){
+				if(xmlhttp.readyState===4){
+					if(xmlhttp.status===200){
+						opts.success(JSON.parse(xmlhttp.responseText);
+					}else{
+						opts.error();
+					}
+				}
+			};
+			xmlhttp.open('get',opts.url+'?'+serialize(opts.data),true);
+			xmlhttp.send();
+		}
+
+		function serialize(data){
+			var str = '';
+			for(var k in data){
+				str += k + "="+data[k]+"&";
+			}
+			str = str.slice(0,str.length-1);
+			return str;
+		}
+
+
+		function bind(el,type,handler){
+			if(el.addEventListener){
+				el.addEventListener(type,handler);
+			}else{
+				el.attachEvent('on'+type,function(){
+					handler.call(el);
+				});
+			}
+		}
+	</script>
+</body>
+</html>

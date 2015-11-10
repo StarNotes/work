@@ -1,0 +1,119 @@
+*{
+	margin:0;padding:0;
+}
+.nav{
+	height:55px;
+	background-color:#000;
+	font-size:14px;
+	position:relative;
+}
+.nav li{
+	list-style: none
+}
+.nav a{
+	text-decoration:none;
+	cursor: pointer;
+}
+.nav img{
+	display: block;
+	width:175px;
+	height:52px;
+	margin-left:50px;
+	padding-bottom:3px;
+	cursor:pointer;
+}
+.nav .left{
+	position:absolute;
+	top:0;
+	left:240px;
+	
+}
+.nav .left li{
+	float:left;
+	padding:0 10px;
+	
+}
+.nav .left ul > li:hover{
+	background-color: #2dcb70;
+}
+.nav .left ul > li:active{
+	background-color: #aaaaaa;
+}
+
+dl dd:hover{
+	background-color: #cccccc;
+}
+.nav .menu2 .arrow{
+	position: absolute;
+	border-color:#FFF transparent transparent transparent; 
+    border-style:solid;
+    border-width:5px; 
+  	top:25px;
+  	right:0;
+    width:0;  
+    height:0; 
+    line-height:0;  
+    overflow:hidden;  
+ 	cursor:pointer; 
+}
+.nav .left li > a{
+	color:#fff;
+	height:55px;
+	line-height: 55px;
+	font-weight: 600;
+}
+.nav .menu2{
+	position:relative;
+}
+.nav .menu2 dl{
+	position:absolute;
+	left:0;
+	padding:10px 0;
+	border:1px solid #999e9f;
+	box-shadow: 3px 3px 3px #cce6f5;	
+}
+.nav .menu2 a{
+	color:#000;
+}
+.nav .menu2 .first{
+	margin-top: 55px;
+	opacity:0;
+	width:120px;
+	
+}
+.nav .menu2 dl a{
+	display: block;
+	padding: 10px 0 10px 15px;	
+}
+
+.nav .menu2 .second{
+	margin-top: 55px;
+	opacity: 0;
+	width:100px;
+}
+.nav .menu2:hover dl{
+	opacity: 1
+}
+.nav .right {
+	position:absolute;
+	top:0;
+	right:10px;
+	
+}
+.nav .right li{
+	float:left;
+	padding:0 10px;
+	
+}
+.nav .right li a{
+	color:#fff;
+	height:55px;
+	line-height: 55px;
+	font-weight: 600;
+}
+.nav .right ul li:hover{
+	background-color: #2dcb70;
+}
+.nav .right ul a:active{
+	color: #1d71d9;
+}

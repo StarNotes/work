@@ -1,0 +1,45 @@
+<!doctype>
+<html>
+<head>
+	<meta charset = "utf-8">
+	<title>下雨效果</title>
+</head>
+<style>
+	html,body,div,span{
+		margin:0;
+		padding: 0;
+	}
+	div{
+		position: relative;
+		width:600px;
+		height:500px;
+		background-color: #000;
+		margin:100px auto;
+		overflow: hidden;
+	}
+	img{
+		position: absolute;
+		display: inline-block;
+	}
+</style>
+<body>
+	<div></div>
+	<script type="text/javascript" src= "jquery.js"></script>
+	<script type="text/javascript">
+		
+		setInterval(function(){	
+			var $img = $("<img>");
+			    $img.attr("src","icon.png");
+			    $img.css("left",rand(0,600)+'px');	
+			    $img.animate({"top":'520px'},function(){
+			    	$(this).remove();
+			    });
+	    		$("div").append($img);
+		},0)
+
+		function rand(a,b){
+		return a + (Math.floor(Math.random() * (b - a)));
+	}
+	</script>
+</body>
+</html>

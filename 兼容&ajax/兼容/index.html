@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>事件绑定，兼容高级浏览器和ie</title>
+  <style type="text/css">
+  p{
+  	height:30px;
+  	line-height: 30px;
+  	width:200px;
+  	border: 1px solid #000;
+  }
+  </style>
+</head>
+<body>
+<p></p>
+<button id="btn">点我</button>
+<script type="text/javascript">
+	function bind(el,type,handler){
+		if(el.addEventListener){
+			el.addEventListener(type,handler);
+		}else{
+			el.attachEvent('on'+type,function(){
+				handler.call(el);
+			});
+		}
+	}
+
+	var btn = document.getElementById("btn"),
+		con = document. getElementsByTagName("p")[0];
+
+	bind(btn,'click',function(){
+		var self = this;
+		if(btn.addEventListener){
+			con.innerText = "我是高级浏览器";
+		}else{
+			con.innerText = "我是ie";
+		}
+	});
+</script>
+</body>
+</html>
